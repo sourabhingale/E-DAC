@@ -1,0 +1,52 @@
+#include<iostream>
+#include<conio.h>
+#include<string.h>
+using namespace std;
+struct cricket
+{
+	char pname[20];
+	char tname[20];
+	float bavg;
+};
+
+int main()
+{
+	struct cricket s[10], t;
+	int i, j, n;
+	
+	
+	cout << "enter the no of players (between 1-9)" << endl;
+	cin >> n;
+	cout << "Enter data of % d players" << endl;
+	for (i = 0; i < n; i++)
+	{
+		cout << "Enter PName "<<endl;
+		cin >> s[i].pname;
+			cout<<"TName " << endl; 
+		cin >>s[i].tname;
+		cout << "BAvg for player" << endl;
+		cin >> s[i].bavg;
+	}
+
+	for (i = 1; i <= n - 1; i++)
+	{
+		for (j = 1; j <= n - i; j++)
+		{
+			if (strcmp(s[j - 1].tname, s[j].tname) > 0)
+			{
+				t = s[j - 1];
+				s[j - 1] = s[j];
+				s[j] = t;
+			}
+		}
+	}
+
+	cout << "After teamwise sorting... Player list is " << endl;
+	for (i = 0; i < n; i++)
+	{
+		cout <<"name of player :- "<< s[i].pname << endl << "team name :"<<s[i].tname << endl << "average score" << s[i].bavg << endl;
+	}
+
+	
+	return 0;
+}
